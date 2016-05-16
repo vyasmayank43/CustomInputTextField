@@ -38,6 +38,9 @@ You can also write your own validation with following code
         textField.customPredicate = predicate
         textField.textValidationType = TextValidation.Custom
 
+5. To add InputAccessoryView on textFields give them tag greater than zero with increment for next textfield.
+
+
 And done....
 
 
