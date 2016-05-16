@@ -12,7 +12,7 @@
 		A85C01291CE9AD8E00E9B343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85C01271CE9AD8E00E9B343 /* Main.storyboard */; };
 		A85C012B1CE9AD8E00E9B343 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85C012A1CE9AD8E00E9B343 /* Assets.xcassets */; };
 		A85C012E1CE9AD8E00E9B343 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85C012C1CE9AD8E00E9B343 /* LaunchScreen.storyboard */; };
-		A85C01361CE9ADB000E9B343 /* CustomInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C01351CE9ADB000E9B343 /* CustomInputTextField.swift */; };
+		A8DF4E911CE9C881001A06A2 /* CustomInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DF4E901CE9C881001A06A2 /* CustomInputTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		A85C012A1CE9AD8E00E9B343 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A85C012D1CE9AD8E00E9B343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A85C012F1CE9AD8E00E9B343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A85C01351CE9ADB000E9B343 /* CustomInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInputTextField.swift; sourceTree = "<group>"; };
+		A8DF4E901CE9C881001A06A2 /* CustomInputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomInputTextField.swift; path = ../../CustomInputTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +59,8 @@
 				A85C01231CE9AD8E00E9B343 /* AppDelegate.swift */,
 				A85C01251CE9AD8E00E9B343 /* ViewController.swift */,
 				A85C01271CE9AD8E00E9B343 /* Main.storyboard */,
-				A85C01351CE9ADB000E9B343 /* CustomInputTextField.swift */,
 				A85C012A1CE9AD8E00E9B343 /* Assets.xcassets */,
+				A8DF4E901CE9C881001A06A2 /* CustomInputTextField.swift */,
 				A85C012C1CE9AD8E00E9B343 /* LaunchScreen.storyboard */,
 				A85C012F1CE9AD8E00E9B343 /* Info.plist */,
 			);
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A85C01261CE9AD8E00E9B343 /* ViewController.swift in Sources */,
-				A85C01361CE9ADB000E9B343 /* CustomInputTextField.swift in Sources */,
+				A8DF4E911CE9C881001A06A2 /* CustomInputTextField.swift in Sources */,
 				A85C01241CE9AD8E00E9B343 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +292,7 @@
 				A85C01341CE9AD8E00E9B343 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
