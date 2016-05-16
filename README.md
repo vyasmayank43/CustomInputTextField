@@ -34,12 +34,17 @@ CustomInputTextField requires ARC.
         
         textField.textValidationType = TextValidation.Empty
 
-You can also write your own validation with following code
+You can also write your own validation with following code:
         
         let predicate = NSPredicate(format:"self.length > 8")  // write custom predicate as per your requirement.
         textField.customPredicate = predicate
         textField.textValidationType = TextValidation.Custom
 
+
+To validate text use below code:
+       
+       let check: Bool = textField.validateText()
+       
 And done....
 
 
