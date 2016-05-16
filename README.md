@@ -28,7 +28,9 @@ CustomInputTextField requires ARC.
        errorFontSize  
        errorText  
 
-4. For validation change in your ViewController make reference of textfield and in viewDidLoad write below method:
+4. To add InputAccessoryView on textFields give them tag greater than zero with increment for next textfield.
+
+5. For validation change in your ViewController make reference of textfield and in viewDidLoad write below method:
         
         textField.textValidationType = TextValidation.Empty
 
@@ -37,9 +39,6 @@ You can also write your own validation with following code
         let predicate = NSPredicate(format:"self.length > 8")  // write custom predicate as per your requirement.
         textField.customPredicate = predicate
         textField.textValidationType = TextValidation.Custom
-
-5. To add InputAccessoryView on textFields give them tag greater than zero with increment for next textfield.
-
 
 And done....
 
