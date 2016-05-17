@@ -1,28 +1,25 @@
 //
-//  CustomInputTextField.swift
-//  Demo
+//  CustomInputTextView.swift
+//  JobSker
 //
 //  Created by Mayank Vyas on 16/05/16.
-//  Copyright © 2016 MoonShine. All rights reserved.
+//  Copyright © 2016 HT Media. All rights reserved.
 //
 
 import UIKit
 
-public enum TextValidation: NSInteger {
-    case None
-    case Empty
-    case Email
-    case Custom
-}
+@IBDesignable class CustomInputTextView: UITextView {
 
-@IBDesignable class CustomInputTextField: UITextField {
-    
     // MARK: - Variables
+    
+    var placeHolderLabel: UILabel! = UILabel()
     
     var hintLabel: UILabel! = UILabel()
     var hintLabelTopConst: NSLayoutConstraint!
     
     var errorLabel: UILabel! = UILabel()
+    var errorLabelTopConst: NSLayoutConstraint!
+    
     var dividerView: UIView! = UIView()
     
     var textValidationType: TextValidation = TextValidation.None
@@ -30,6 +27,12 @@ public enum TextValidation: NSInteger {
     
     
     // MARK: - Custom IBInspectable
+   
+    @IBInspectable var hintText: String = "" {
+        didSet {
+            hintLabel.text = hintText
+        }
+    }
     
     @IBInspectable var hintTextColor: UIColor = UIColor.grayColor() {
         didSet {
@@ -92,20 +95,24 @@ public enum TextValidation: NSInteger {
         self.setupCustomView()
     }
     
-    override init(frame:CGRect) {
-        super.init(frame:frame)
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
         
         self.setupCustomView()
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextFieldTextDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextViewTextDidChangeNotification, object: nil)
     }
     
     private func setupCustomView() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomInputTextField.updateViewLayout), name: UITextFieldTextDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomInputTextView.updateViewLayout), name: UITextViewTextDidChangeNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomInputTextView.updateViewLayout), name: UITextViewTextDidEndEditingNotification, object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomInputTextView.updateViewLayout), name: UITextViewTextDidBeginEditingNotification, object: nil)
+
         if self.tag != 0 {
             
             let titleFont: UIFont = UIFont(name: (self.font?.fontName)!, size: 16)!
@@ -133,11 +140,11 @@ public enum TextValidation: NSInteger {
             self.inputAccessoryView = keyBoardToolBar
         }
         
+        
         hintLabel.alpha = 0.0
         hintLabel.textAlignment = NSTextAlignment.Left
         hintLabel.backgroundColor = UIColor.clearColor()
         hintLabel.textColor = hintTextColor
-        hintLabel.text = self.placeholder
         self.addSubview(hintLabel)
         
         hintLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -154,6 +161,24 @@ public enum TextValidation: NSInteger {
             ])
         
         
+        placeHolderLabel.alpha = 1.0
+        placeHolderLabel.textAlignment = NSTextAlignment.Left
+        placeHolderLabel.backgroundColor = UIColor.clearColor()
+        placeHolderLabel.textColor = UIColor(white: 0.70, alpha: 1.0)
+        self.addSubview(placeHolderLabel)
+        
+        placeHolderLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addConstraints([
+            NSLayoutConstraint(item: placeHolderLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: hintLabel.font.lineHeight + 5),
+            
+            NSLayoutConstraint(item: placeHolderLabel, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 5.0),
+            
+            NSLayoutConstraint(item: placeHolderLabel, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0.0),
+            
+            ])
+        
+        
         dividerView.alpha = 1.0
         self.addSubview(dividerView)
         
@@ -165,7 +190,9 @@ public enum TextValidation: NSInteger {
             
             NSLayoutConstraint(item: dividerView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0.0),
             
-            NSLayoutConstraint(item: dividerView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 1.0)
+            NSLayoutConstraint(item: dividerView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 1.0),
+            
+            NSLayoutConstraint(item: dividerView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0),
             
             ])
         
@@ -178,6 +205,8 @@ public enum TextValidation: NSInteger {
         
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        errorLabelTopConst = NSLayoutConstraint(item: errorLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: self.frame.size.height - errorLabel.font.lineHeight - 5.0)
+
         self.addConstraints([
             
             NSLayoutConstraint(item: errorLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: dividerView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 2.0),
@@ -185,33 +214,35 @@ public enum TextValidation: NSInteger {
             NSLayoutConstraint(item: errorLabel, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0.0),
             
             NSLayoutConstraint(item: errorLabel, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0.0),
-            
-            NSLayoutConstraint(item: errorLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0),
-            
+        
+            errorLabelTopConst,
+        
             ])
-    }
-    
-    override var placeholder: String? {
-        didSet {
-            hintLabel.text = self.placeholder
-        }
     }
     
     override var font: UIFont? {
         didSet {
             hintLabel.font = UIFont(name: (font?.fontName)!, size: hintFontSize)
+            placeHolderLabel.font = font
         }
     }
-    //    #endif
-    
     
     override func layoutSubviews() {
         
         super.layoutSubviews()
+        
+        self.textContainerInset = UIEdgeInsetsMake(hintLabel.frame.size.height + 5.0, self.contentInset.left, errorLabel.font.lineHeight + 12.0, self.contentInset.right)
+        
         self.updateViewLayout()
+        
     }
+    //    #endif
+    
     
     func updateViewLayout() {
+        
+        super.layoutSubviews()
+        
         let isResp = self.isFirstResponder()
         
         if isResp && self.text!.isEmpty == false {
@@ -224,9 +255,11 @@ public enum TextValidation: NSInteger {
         if self.text!.isEmpty == false {
             // Hide
             self.showHintLabel()
+            placeHolderLabel.text = ""
         } else {
             // Show
             self.hideHintLabel()
+            placeHolderLabel.text = hintText
         }
         
         if let toolbar: UIToolbar = self.inputAccessoryView as? UIToolbar {
@@ -262,24 +295,10 @@ public enum TextValidation: NSInteger {
                 nextBarBtn.setTitleTextAttributes(inactiveAttrs, forState: UIControlState.Normal)
             }
         }
-    }
-    
-    override func textRectForBounds(bounds:CGRect) -> CGRect {
-        var r = super.textRectForBounds(bounds)
         
-        r.origin.x = r.origin.x + 5
-        r.size.width = r.size.width - 10
-        
-        return r
-    }
-    
-    override func editingRectForBounds(bounds:CGRect) -> CGRect {
-        var r = super.editingRectForBounds(bounds)
-        
-        r.origin.x = r.origin.x + 5
-        r.size.width = r.size.width - 10
-        
-        return r
+        if errorLabelTopConst.constant != self.frame.size.height - errorLabel.font.lineHeight - 5.0 {
+            errorLabelTopConst.constant =  self.frame.size.height - errorLabel.font.lineHeight - 5.0
+        }
     }
     
     

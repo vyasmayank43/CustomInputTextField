@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - IBProperties
     
     @IBOutlet weak var userEmailField: CustomInputTextField!
     @IBOutlet weak var passwordField: CustomInputTextField!
-    
+    @IBOutlet weak var userDetailTxtView: CustomInputTextView!
     
     // MARK: -
     
@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         let passwordPredicate = NSPredicate(format:"self.length > 8")
         passwordField.customPredicate = passwordPredicate
         passwordField.textValidationType = TextValidation.Custom
+        
+        userDetailTxtView.textValidationType = TextValidation.Email
     }
     
     
@@ -38,6 +40,7 @@ class ViewController: UIViewController {
         
         check = userEmailField.validateText()
         check = passwordField.validateText()
+        check = userDetailTxtView.validateText()
         
         
         if check == true {
@@ -60,6 +63,8 @@ class ViewController: UIViewController {
 }
 
 
+// MARK: - UITextField Delegates
+
 extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -76,4 +81,22 @@ extension ViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+
+// MARK: - UITextView Delegates
+
+extension ViewController: UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        (textView as! CustomInputTextView).hideValidation()
+        return true
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        (textView as! CustomInputTextView).validateText()
+        textView.resignFirstResponder()
+        return true
+    }
+    
 }

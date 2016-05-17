@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0l-mN-HM0" customClass="CustomInputTextField" customModule="Demo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="100" width="560" height="55"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="smq-Yq-twD" customClass="CustomInputTextField" customModule="Demo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="120" width="560" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Cni-hy-Na2"/>
+                                    <constraint firstAttribute="height" constant="55" id="XIk-Cp-4LB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -45,11 +45,14 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="Please provide valid email."/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="weS-22-BAy"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZl-L0-9Es" customClass="CustomInputTextField" customModule="Demo" customModuleProvider="target">
-                                <rect key="frame" x="20" y="185" width="560" height="55"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DGS-Pn-P5K" customClass="CustomInputTextField" customModule="Demo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="205" width="560" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="N0r-qr-7T3"/>
+                                    <constraint firstAttribute="height" constant="55" id="tUy-iL-9xx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -74,44 +77,79 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="Password should be minimum 8 characters long."/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Hac-G7-Sfe"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8us-eI-cng">
-                                <rect key="frame" x="380" y="285" width="200" height="40"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-SD-Mih" customClass="CustomInputTextView" customModule="Demo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="290" width="560" height="69"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="UIx-Vq-Kbf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="User Details"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="hintTextColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="hintActiveTextColor">
+                                        <color key="value" red="0.18039215689999999" green="0.49019607840000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.61568627450000002" green="0.1450980392" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dividerColor">
+                                        <color key="value" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hintFontSize">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="errorFontSize">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="errorText" value="Please enter something about yourself."/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="wA9-fV-nyJ"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbX-4i-LIl">
+                                <rect key="frame" x="380" y="409" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.49019607840000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="HDH-FI-moG"/>
-                                    <constraint firstAttribute="width" constant="200" id="ygK-ig-1Nc"/>
+                                    <constraint firstAttribute="height" constant="40" id="0I0-Ot-dUc"/>
+                                    <constraint firstAttribute="width" constant="200" id="YoM-ib-AcM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Go">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d8l-Td-qi8"/>
+                                    <action selector="goBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IrZ-14-Njn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x0l-mN-HM0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="3bx-aU-GEw"/>
-                            <constraint firstAttribute="trailing" secondItem="x0l-mN-HM0" secondAttribute="trailing" constant="20" id="Aqb-8a-7Y4"/>
-                            <constraint firstAttribute="trailing" secondItem="tZl-L0-9Es" secondAttribute="trailing" constant="20" id="Qnf-wA-ow9"/>
-                            <constraint firstItem="8us-eI-cng" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="RS8-fR-ax4"/>
-                            <constraint firstAttribute="trailing" secondItem="8us-eI-cng" secondAttribute="trailing" constant="20" id="gg6-Qe-jNq"/>
-                            <constraint firstItem="8us-eI-cng" firstAttribute="top" secondItem="tZl-L0-9Es" secondAttribute="bottom" constant="45" id="lne-td-TtX"/>
-                            <constraint firstItem="tZl-L0-9Es" firstAttribute="top" secondItem="x0l-mN-HM0" secondAttribute="bottom" constant="30" id="pMj-tP-iei"/>
-                            <constraint firstItem="x0l-mN-HM0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="rUG-Uq-d4h"/>
-                            <constraint firstItem="tZl-L0-9Es" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="zJz-3m-oFq"/>
+                            <constraint firstItem="smq-Yq-twD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="1pF-oI-6Vp"/>
+                            <constraint firstItem="qbX-4i-LIl" firstAttribute="top" secondItem="ftK-SD-Mih" secondAttribute="bottom" constant="50" id="3OO-6d-gN3"/>
+                            <constraint firstAttribute="trailing" secondItem="qbX-4i-LIl" secondAttribute="trailing" constant="20" id="9qG-8m-dFR"/>
+                            <constraint firstItem="smq-Yq-twD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="YaG-br-Z2e"/>
+                            <constraint firstItem="ftK-SD-Mih" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ZSP-OZ-uiw"/>
+                            <constraint firstItem="DGS-Pn-P5K" firstAttribute="top" secondItem="smq-Yq-twD" secondAttribute="bottom" constant="30" id="ZTu-tF-ZQS"/>
+                            <constraint firstAttribute="trailing" secondItem="ftK-SD-Mih" secondAttribute="trailing" constant="20" id="aSZ-Oh-q1e"/>
+                            <constraint firstAttribute="trailing" secondItem="DGS-Pn-P5K" secondAttribute="trailing" constant="20" id="m8J-VU-IdN"/>
+                            <constraint firstItem="ftK-SD-Mih" firstAttribute="top" secondItem="DGS-Pn-P5K" secondAttribute="bottom" constant="30" id="nhn-Bx-YAH"/>
+                            <constraint firstAttribute="trailing" secondItem="smq-Yq-twD" secondAttribute="trailing" constant="20" id="piG-bJ-GC9"/>
+                            <constraint firstItem="DGS-Pn-P5K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="suU-6T-WGw"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="RS8-fR-ax4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="passwordField" destination="tZl-L0-9Es" id="mXm-nz-OR5"/>
-                        <outlet property="userEmailField" destination="x0l-mN-HM0" id="Ktv-0N-NiA"/>
+                        <outlet property="passwordField" destination="DGS-Pn-P5K" id="iHi-1O-8SG"/>
+                        <outlet property="userDetailTxtView" destination="ftK-SD-Mih" id="jr6-oo-u5k"/>
+                        <outlet property="userEmailField" destination="smq-Yq-twD" id="LP0-jR-vZX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

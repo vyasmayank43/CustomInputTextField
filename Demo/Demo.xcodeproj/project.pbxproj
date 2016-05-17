@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8003B5E1CEB3237006AB67E /* CustomInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8003B5D1CEB3237006AB67E /* CustomInputTextView.swift */; };
 		A85C01241CE9AD8E00E9B343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C01231CE9AD8E00E9B343 /* AppDelegate.swift */; };
 		A85C01261CE9AD8E00E9B343 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C01251CE9AD8E00E9B343 /* ViewController.swift */; };
 		A85C01291CE9AD8E00E9B343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85C01271CE9AD8E00E9B343 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8003B5D1CEB3237006AB67E /* CustomInputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomInputTextView.swift; path = ../../CustomInputTextView.swift; sourceTree = "<group>"; };
 		A85C01201CE9AD8E00E9B343 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85C01231CE9AD8E00E9B343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85C01251CE9AD8E00E9B343 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				A85C01271CE9AD8E00E9B343 /* Main.storyboard */,
 				A85C012A1CE9AD8E00E9B343 /* Assets.xcassets */,
 				A8DF4E901CE9C881001A06A2 /* CustomInputTextField.swift */,
+				A8003B5D1CEB3237006AB67E /* CustomInputTextView.swift */,
 				A85C012C1CE9AD8E00E9B343 /* LaunchScreen.storyboard */,
 				A85C012F1CE9AD8E00E9B343 /* Info.plist */,
 			);
@@ -141,6 +144,7 @@
 				A85C01261CE9AD8E00E9B343 /* ViewController.swift in Sources */,
 				A8DF4E911CE9C881001A06A2 /* CustomInputTextField.swift in Sources */,
 				A85C01241CE9AD8E00E9B343 /* AppDelegate.swift in Sources */,
+				A8003B5E1CEB3237006AB67E /* CustomInputTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
