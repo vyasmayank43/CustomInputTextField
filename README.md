@@ -1,5 +1,5 @@
 # CustomInputTextField
-Customised UITextField with HintLabel, ErrorLabel, Divider and validations
+Customised UITextField and UITextView with HintLabel, ErrorLabel, Divider and validations
 
 
 ## Purpose
@@ -47,6 +47,9 @@ To validate text use below code:
        
 And done....
 
+***
+For UITextView there is additional IBInspectable propty "hintText" for placehodler. Set ot to show placeholder.
+***
 
 ## Credits
 
