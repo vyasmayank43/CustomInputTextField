@@ -48,7 +48,7 @@ To validate text use below code:
 And done....
 
 ***
-For UITextView there is additional IBInspectable propty "hintText" for placehodler. Set ot to show placeholder.
+For UITextView there is additional IBInspectable propty "hintText" for placehodler. Set it to show placeholder on textView.
 ***
 
 ## Credits
