@@ -7,7 +7,7 @@ CustomInputTextField is a class to provide Android InputLayout functionality in 
 
 
 ## Supported OS & SDK Versions
-Supported build target - iOS 8.0 (Xcode 7.3)
+Supported build target - iOS 8.0 and above (Xcode 7.3)
 
 
 ## ARC Compatibility
